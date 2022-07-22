@@ -6,6 +6,7 @@ import {
   Header,
   VStack,
 } from "./Dashboard.styled";
+import MainCard from "./MainCard";
 
 type Props = {};
 
@@ -19,7 +20,9 @@ const Dashboard = (props: Props) => {
             <p>Total Followers: 23,004</p>
           </VStack>
         </Header>
-        <Flex></Flex>
+        <Flex>
+          <MainCard />
+        </Flex>
         <Flex></Flex>
       </Container>
     </Background>

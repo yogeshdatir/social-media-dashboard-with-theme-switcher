@@ -46,6 +46,25 @@ export const VStack = styled.div`
   flex-direction: column;
 `;
 
-export const Flex = styled.div`
+interface IFlexProps {
+  direction?: "column" | "row" | "reverse-column" | "reverse-row";
+  alignItems?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
+  justifyContent?:
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "space-between"
+    | "space-around"
+    | "space-evenly";
+  gap?: string | number;
+}
+
+export const Flex = styled.div<IFlexProps>`
   display: flex;
+  flex-direction: ${({ direction }: IFlexProps) => direction || "row"};
+  align-items: ${({ alignItems }: IFlexProps) => alignItems || "stretch"};
+  justify-content: ${({ justifyContent }: IFlexProps) =>
+    justifyContent || "flex-start"};
+  gap: ${({ gap }: IFlexProps) =>
+    gap ? (typeof gap === "string" ? gap : `${gap}px`) : 0};
 `;
