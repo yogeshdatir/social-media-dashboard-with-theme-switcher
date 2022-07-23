@@ -50,11 +50,16 @@ export const Followers = styled.p`
   color: #63687d;
 `;
 
-export const ChangedFollowers = styled.p`
+interface IChangeFollowersProps {
+  isPositive?: boolean;
+}
+
+export const ChangedFollowers = styled.p<IChangeFollowersProps>`
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
   /* identical to box height */
 
-  color: #1eb589;
+  color: ${({ isPositive }: IChangeFollowersProps) =>
+    isPositive ? "#1eb589" : "#DC414C"};
 `;

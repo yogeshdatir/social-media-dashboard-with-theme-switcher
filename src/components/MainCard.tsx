@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactSVG } from "react";
 import {
   ChangedFollowers,
   Followers,
@@ -9,20 +9,28 @@ import {
 import { ReactComponent as FbLogo } from "../images/icon-facebook.svg";
 import { Flex } from "./Dashboard.styled";
 import { ReactComponent as UpArrow } from "../images/icon-up.svg";
-import { ReactComponent as DoenArrow } from "../images/icon-down.svg";
+import { ReactComponent as DownArrow } from "../images/icon-down.svg";
 
-type Props = {
+export interface IMainCardProps {
   username: string;
   year: number;
   change: number;
-};
+  SVGSocialMediaLogo: React.SVGProps<SVGSVGElement>;
+}
 
-const MainCard = (props) => {
+const MainCard = ({
+  username,
+  year,
+  change,
+  SVGSocialMediaLogo,
+}: IMainCardProps) => {
   return (
     <MainCardContainer>
       <Flex gap={8}>
-        <FbLogo />
-        <Username>@nathanf</Username>
+        <>
+          {SVGSocialMediaLogo}
+          <Username>@{username}</Username>
+        </>
       </Flex>
       <Flex
         direction="column"
@@ -30,12 +38,14 @@ const MainCard = (props) => {
         alignItems="center"
         gap={9}
       >
-        <Year>1987</Year>
+        <Year>{year}</Year>
         <Followers>Followers</Followers>
       </Flex>
       <Flex alignItems="center" gap={4}>
-        <UpArrow />
-        <ChangedFollowers>12 Today</ChangedFollowers>
+        {change > 0 ? <UpArrow /> : <DownArrow />}
+        <ChangedFollowers isPositive={change > 0}>
+          {Math.abs(change)} Today
+        </ChangedFollowers>
       </Flex>
     </MainCardContainer>
   );

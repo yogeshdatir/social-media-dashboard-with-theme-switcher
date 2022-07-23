@@ -57,6 +57,15 @@ interface IFlexProps {
     | "space-around"
     | "space-evenly";
   gap?: string | number;
+  wrap?:
+    | "nowrap"
+    | "wrap"
+    | "wrap-reverse"
+    | "initial"
+    | "inherit"
+    | "revert"
+    | "revert-layer"
+    | "unset";
 }
 
 export const Flex = styled.div<IFlexProps>`
@@ -67,4 +76,14 @@ export const Flex = styled.div<IFlexProps>`
     justifyContent || "flex-start"};
   gap: ${({ gap }: IFlexProps) =>
     gap ? (typeof gap === "string" ? gap : `${gap}px`) : 0};
+  flex-wrap: ${({ wrap }: IFlexProps) => wrap || "nowrap"};
+`;
+
+export const SubHeader = styled.h2`
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  /* identical to box height */
+
+  color: #63687d;
 `;
