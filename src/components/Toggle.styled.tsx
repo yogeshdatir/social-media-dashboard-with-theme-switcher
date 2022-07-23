@@ -2,6 +2,25 @@ import styled from "@emotion/styled";
 
 export const ToggleLabel = styled.label`
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+
+  text-align: right;
+
+  color: #848bab;
+
+  @media (max-width: 540px) {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #848bab;
+  }
 `;
 
 export const CheckBox = styled.input`

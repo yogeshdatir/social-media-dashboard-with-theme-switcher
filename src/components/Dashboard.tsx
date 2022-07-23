@@ -106,6 +106,7 @@ const Dashboard = (props: Props) => {
           </VStack>
           <Toggle
             onChange={(event: ChangeEvent) => setIsDarkModeOn(!isDarkModeOn)}
+            label="Dark Mode"
           />
         </Header>
         <CardsFlex>
