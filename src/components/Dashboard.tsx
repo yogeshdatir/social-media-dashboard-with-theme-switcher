@@ -133,7 +133,7 @@ const Dashboard = (props: Props) => {
             }
           )}
         </CardsFlex>
-        <Flex direction="column">
+        <Flex flexDirection="column">
           <SubHeader>Overview - Today</SubHeader>
           <CardsFlex>
             {overviewCards.map(

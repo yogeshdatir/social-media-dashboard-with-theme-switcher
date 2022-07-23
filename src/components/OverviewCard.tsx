@@ -25,13 +25,17 @@ const OverviewCard = ({
 }: IProps) => {
   return (
     <OverviewCardContainer>
-      <Flex justifyContent="space-between" width="100%">
+      <Flex justifyContent="space-between" flexWidth="100%">
         <>
           <StatName>{statName}</StatName>
           {SVGSocialMediaLogo}
         </>
       </Flex>
-      <Flex justifyContent="space-between" width="100%" alignItems="flex-end">
+      <Flex
+        justifyContent="space-between"
+        flexWidth="100%"
+        alignItems="flex-end"
+      >
         <StatValue>{nFormatter(statValue, 2)}</StatValue>
         <Flex alignItems="center" gap={4}>
           {percentageChange > 0 ? <UpArrow /> : <DownArrow />}

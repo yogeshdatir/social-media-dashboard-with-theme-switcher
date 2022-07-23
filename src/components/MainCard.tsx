@@ -40,7 +40,7 @@ const MainCard = ({
         </>
       </Flex>
       <Flex
-        direction="column"
+        flexDirection="column"
         justifyContent="space-between"
         alignItems="center"
         gap={9}

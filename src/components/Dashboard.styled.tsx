@@ -16,7 +16,7 @@ export const Mask = styled.div`
   border-radius: 0px 0px 20px 20px;
 `;
 
-export const Container = styled.div`
+export const Container = styled.main`
   max-width: 1110px;
   margin: 0 auto;
   height: auto;
@@ -75,7 +75,7 @@ export const VStack = styled.div`
 `;
 
 interface IFlexProps {
-  direction?: "column" | "row" | "reverse-column" | "reverse-row";
+  flexDirection?: "column" | "row" | "reverse-column" | "reverse-row";
   alignItems?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
   justifyContent?:
     | "flex-start"
@@ -94,20 +94,24 @@ interface IFlexProps {
     | "revert"
     | "revert-layer"
     | "unset";
-  width?: string | number;
+  flexWidth?: string | number;
 }
 
 export const Flex = styled.div<IFlexProps>`
   display: flex;
-  flex-direction: ${({ direction }: IFlexProps) => direction || "row"};
+  flex-direction: ${({ flexDirection }: IFlexProps) => flexDirection || "row"};
   align-items: ${({ alignItems }: IFlexProps) => alignItems || "stretch"};
   justify-content: ${({ justifyContent }: IFlexProps) =>
     justifyContent || "flex-start"};
   gap: ${({ gap }: IFlexProps) =>
     gap ? (typeof gap === "string" ? gap : `${gap}px`) : 0};
   flex-wrap: ${({ wrap }: IFlexProps) => wrap || "nowrap"};
-  width: ${({ width }: IFlexProps) =>
-    width ? (typeof width === "string" ? width : `${width}px`) : "auto"};
+  width: ${({ flexWidth }: IFlexProps) =>
+    flexWidth
+      ? typeof flexWidth === "string"
+        ? flexWidth
+        : `${flexWidth}px`
+      : "auto"};
 `;
 
 export const SubHeader = styled.h2`
