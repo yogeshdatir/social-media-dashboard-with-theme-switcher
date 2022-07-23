@@ -14,7 +14,7 @@ import {
 } from "./Dashboard.styled";
 import MainCard from "./MainCard";
 import { ReactComponent as FacebookLogo } from "../images/icon-facebook.svg";
-import { ReactComponent as InstagramLogo } from "../images/icon-instagram.svg";
+import InstagramLogo from "../images/icon-instagram.png";
 import { ReactComponent as TwitterLogo } from "../images/icon-twitter.svg";
 import { ReactComponent as YoutubeLogo } from "../images/icon-youtube.svg";
 import {
@@ -34,7 +34,7 @@ const logoSwitcher = (socialMedia: string) => {
     case "facebook":
       return <FacebookLogo />;
     case "instagram":
-      return <InstagramLogo />;
+      return <img src={InstagramLogo} alt="Instagram logo" />;
     case "twitter":
       return <TwitterLogo />;
     case "youtube":
