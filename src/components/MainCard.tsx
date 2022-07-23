@@ -1,31 +1,38 @@
-import React, { ReactSVG } from "react";
+import React from "react";
 import {
   ChangedFollowers,
   Followers,
   MainCardContainer,
   Username,
-  Year,
+  StatValue,
 } from "./MainCard.styled";
-import { ReactComponent as FbLogo } from "../images/icon-facebook.svg";
 import { Flex } from "./Dashboard.styled";
 import { ReactComponent as UpArrow } from "../images/icon-up.svg";
 import { ReactComponent as DownArrow } from "../images/icon-down.svg";
+import { nFormatter } from "./Dashboard";
+
+export interface IBorderColor {
+  color?: string;
+  gradient?: string;
+}
 
 export interface IMainCardProps {
   username: string;
-  year: number;
+  statValue: number;
   change: number;
+  borderColor: IBorderColor;
   SVGSocialMediaLogo: React.SVGProps<SVGSVGElement>;
 }
 
 const MainCard = ({
   username,
-  year,
+  statValue,
   change,
+  borderColor,
   SVGSocialMediaLogo,
 }: IMainCardProps) => {
   return (
-    <MainCardContainer>
+    <MainCardContainer borderColor={borderColor}>
       <Flex gap={8}>
         <>
           {SVGSocialMediaLogo}
@@ -38,7 +45,7 @@ const MainCard = ({
         alignItems="center"
         gap={9}
       >
-        <Year>{year}</Year>
+        <StatValue>{nFormatter(statValue, 2)}</StatValue>
         <Followers>Followers</Followers>
       </Flex>
       <Flex alignItems="center" gap={4}>

@@ -1,10 +1,13 @@
 import React from "react";
 import {
   Background,
+  CardsFlex,
   Container,
   Flex,
   Header,
+  Heading,
   SubHeader,
+  SubTitle,
   VStack,
 } from "./Dashboard.styled";
 import MainCard from "./MainCard";
@@ -19,10 +22,11 @@ import {
   overviewCards,
 } from "./data";
 import OverviewCard from "./OverviewCard";
+import Toggle from "./Toggle";
 
 type Props = {};
 
-const LogoSwitcher = (socialMedia: string) => {
+const logoSwitcher = (socialMedia: string) => {
   switch (socialMedia) {
     case "facebook":
       return <FacebookLogo />;
@@ -38,34 +42,86 @@ const LogoSwitcher = (socialMedia: string) => {
   }
 };
 
+export function nFormatter(num: number, digits: number) {
+  const lookup: {
+    value: number;
+    symbol: string;
+    threshold?: number;
+  }[] = [
+    { value: 1, symbol: "" },
+    { value: 1e3, symbol: "k", threshold: 1e4 },
+    { value: 1e6, symbol: "M" },
+    { value: 1e9, symbol: "G" },
+    { value: 1e12, symbol: "T" },
+    { value: 1e15, symbol: "P" },
+    { value: 1e18, symbol: "E" },
+  ];
+  const rx: RegExp = /\.0+$|(\.[0-9]*[1-9])0+$/;
+  var item:
+    | {
+        value: number;
+        symbol: string;
+        threshold?: number;
+      }
+    | undefined = lookup
+    .slice()
+    .reverse()
+    .find(function (item) {
+      return item.threshold ? num >= item.threshold : num >= item.value;
+    });
+  return item
+    ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol
+    : "0";
+}
+
+const colorSwitcher = (socialMedia: string) => {
+  switch (socialMedia) {
+    case "facebook":
+      return { color: "#178ff5" };
+    case "twitter":
+      return { color: "#1DA1F2" };
+    case "instagram":
+      return {
+        gradient:
+          "linear-gradient(225deg, #DF4896 0%, #EE877E 50.91%, #FDC366 100%);",
+      };
+    case "youtube":
+      return { color: "#C4032B" };
+
+    default:
+      return { color: "#178ff5" };
+  }
+};
+
 const Dashboard = (props: Props) => {
   return (
     <Background>
       <Container>
         <Header>
           <VStack>
-            <h1>Social Media Dashboard</h1>
-            <p>Total Followers: 23,004</p>
+            <Heading>Social Media Dashboard</Heading>
+            <SubTitle>Total Followers: 23,004</SubTitle>
           </VStack>
         </Header>
-        <Flex gap="2rem">
+        <CardsFlex>
           {mainCards.map(
             ({ username, statValue, change, socialMedia }: IMainCardsData) => {
               return (
                 <MainCard
                   key={socialMedia}
                   username={username}
-                  year={statValue}
+                  statValue={statValue}
                   change={change}
-                  SVGSocialMediaLogo={LogoSwitcher(socialMedia)}
+                  borderColor={colorSwitcher(socialMedia)}
+                  SVGSocialMediaLogo={logoSwitcher(socialMedia)}
                 />
               );
             }
           )}
-        </Flex>
+        </CardsFlex>
         <Flex direction="column">
           <SubHeader>Overview - Today</SubHeader>
-          <Flex wrap="wrap" gap="1.5rem 0" justifyContent="space-between">
+          <CardsFlex>
             {overviewCards.map(
               (
                 {
@@ -76,10 +132,18 @@ const Dashboard = (props: Props) => {
                 }: IOverviewCardsData,
                 index: number
               ) => {
-                return <OverviewCard key={index} />;
+                return (
+                  <OverviewCard
+                    key={index}
+                    statName={statName}
+                    statValue={statValue}
+                    percentageChange={percentageChange}
+                    SVGSocialMediaLogo={logoSwitcher(socialMedia)}
+                  />
+                );
               }
             )}
-          </Flex>
+          </CardsFlex>
         </Flex>
       </Container>
     </Background>

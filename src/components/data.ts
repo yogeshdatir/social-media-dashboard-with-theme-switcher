@@ -19,7 +19,7 @@ export const mainCards: IMainCardsData[] = [
     socialMedia: "twitter",
   },
   {
-    username: "@realnathanf",
+    username: "realnathanf",
     statValue: 11000,
     change: 1099,
     socialMedia: "instagram",
