@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from "react";
+import { ChangeEventHandler } from "react";
 import { CheckBox, Slider, ToggleLabel } from "./Toggle.styled";
 // Tutorial: https://www.youtube.com/watch?v=1W3mAtAT7os
 interface IProps {

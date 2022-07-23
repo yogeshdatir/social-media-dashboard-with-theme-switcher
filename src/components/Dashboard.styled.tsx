@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export const Background = styled.div`
   width: 100%;
+  background-color: ${({ theme }) => theme.background.body.primary};
 `;
 
 export const Container = styled.div`
@@ -39,7 +40,7 @@ export const Heading = styled.h1`
 
   text-align: center;
 
-  color: #1d1f29;
+  color: ${({ theme }) => theme.color.primary};
   padding-bottom: 3px;
 
   @media (max-width: 420px) {
@@ -54,7 +55,7 @@ export const SubTitle = styled.p`
   line-height: 17px;
   /* identical to box height */
 
-  color: #63687d;
+  color: ${({ theme }) => theme.color.secondary};
 `;
 
 export const VStack = styled.div`
@@ -104,7 +105,7 @@ export const SubHeader = styled.h2`
   line-height: 29px;
   /* identical to box height */
 
-  color: #63687d;
+  color: ${({ theme }) => theme.color.secondary};
   padding-bottom: 1.5rem;
 `;
 

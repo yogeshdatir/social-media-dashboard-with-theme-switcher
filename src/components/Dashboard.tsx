@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 import {
   Background,
   CardsFlex,
@@ -23,6 +23,7 @@ import {
 } from "./data";
 import OverviewCard from "./OverviewCard";
 import Toggle from "./Toggle";
+import { useToggleThemeContext } from "../contexts/themeToggleContext";
 
 type Props = {};
 
@@ -94,7 +95,7 @@ const colorSwitcher = (socialMedia: string) => {
 };
 
 const Dashboard = (props: Props) => {
-  const [isDarkModeOn, setIsDarkModeOn] = useState<boolean>(false);
+  const { currentThemeName, setCurrentThemeName } = useToggleThemeContext();
 
   return (
     <Background>
@@ -105,7 +106,11 @@ const Dashboard = (props: Props) => {
             <SubTitle>Total Followers: 23,004</SubTitle>
           </VStack>
           <Toggle
-            onChange={(event: ChangeEvent) => setIsDarkModeOn(!isDarkModeOn)}
+            onChange={(event: ChangeEvent) => {
+              currentThemeName === "light"
+                ? setCurrentThemeName("dark")
+                : setCurrentThemeName("light");
+            }}
             label="Dark Mode"
           />
         </Header>

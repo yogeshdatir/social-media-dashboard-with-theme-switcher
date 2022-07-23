@@ -3,7 +3,7 @@ import { ResponsiveGrid } from "./MainCard.styled";
 
 export const OverviewCardContainer = styled(ResponsiveGrid)`
   height: 8rem;
-  background: #f1f3fa;
+  background: ${({ theme }) => theme.background.card};
   border-radius: 5px;
   padding: 1.5rem;
   box-sizing: border-box;
@@ -19,7 +19,7 @@ export const StatName = styled.p`
   line-height: 17px;
   /* identical to box height */
 
-  color: #63687d;
+  color: ${({ theme }) => theme.color.secondary};
 `;
 
 export const StatValue = styled.p`
@@ -28,5 +28,5 @@ export const StatValue = styled.p`
   line-height: 39px;
   /* identical to box height */
 
-  color: #1d1f29;
+  color: ${({ theme }) => theme.color.primary};
 `;

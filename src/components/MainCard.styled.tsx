@@ -18,11 +18,9 @@ export const ResponsiveGrid = styled.div`
   }
 `;
 
-export const MainCardContainer = styled(
-  ResponsiveGrid
-)<IMainCardContainerProps>`
+export const MainCardContainer = styled(ResponsiveGrid)`
   height: 13.5rem;
-  background: #f1f3fa;
+  background: ${({ theme }) => theme.background.card};
   border-radius: 5px;
   padding: 1.5rem;
   box-sizing: border-box;
@@ -59,7 +57,7 @@ export const Username = styled.p`
   line-height: 15px;
   /* identical to box height */
 
-  color: #63687d;
+  color: ${({ theme }) => theme.color.secondary};
 `;
 
 export const StatValue = styled.p`
@@ -71,7 +69,7 @@ export const StatValue = styled.p`
   text-align: center;
   letter-spacing: -2px;
 
-  color: #1d1f29;
+  color: ${({ theme }) => theme.color.primary};
 `;
 
 export const Followers = styled.p`
@@ -84,7 +82,7 @@ export const Followers = styled.p`
   letter-spacing: 5px;
   text-transform: uppercase;
 
-  color: #63687d;
+  color: ${({ theme }) => theme.color.secondary};
 `;
 
 interface IChangeFollowersProps {

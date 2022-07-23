@@ -12,7 +12,7 @@ export const ToggleLabel = styled.label`
 
   text-align: right;
 
-  color: #848bab;
+  color: ${({ theme }) => theme.color.secondary};
 
   @media (max-width: 540px) {
     width: 100%;
