@@ -55,7 +55,6 @@ export const Username = styled.p`
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height */
 
   color: ${({ theme }) => theme.color.secondary};
 `;
@@ -76,7 +75,6 @@ export const Followers = styled.p`
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height */
 
   text-align: center;
   letter-spacing: 5px;
@@ -93,7 +91,6 @@ export const ChangedFollowers = styled.p<IChangeFollowersProps>`
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height */
 
   color: ${({ isPositive }: IChangeFollowersProps) =>
     isPositive ? "#1eb589" : "#DC414C"};

@@ -2,7 +2,17 @@ import styled from "@emotion/styled";
 
 export const Background = styled.div`
   width: 100%;
+  height: 100vh;
   background-color: ${({ theme }) => theme.background.body.primary};
+  position: relative;
+`;
+
+export const Mask = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 35vh;
+  background-color: ${({ theme }) => theme.background.body.secondary};
+  border-radius: 0px 0px 20px 20px;
 `;
 
 export const Container = styled.div`
@@ -36,7 +46,6 @@ export const Heading = styled.h1`
   font-weight: 700;
   font-size: 28px;
   line-height: 34px;
-  /* identical to box height */
 
   text-align: center;
 
@@ -53,7 +62,6 @@ export const SubTitle = styled.p`
   font-weight: 700;
   font-size: 14px;
   line-height: 17px;
-  /* identical to box height */
 
   color: ${({ theme }) => theme.color.secondary};
 `;
@@ -103,7 +111,6 @@ export const SubHeader = styled.h2`
   font-weight: 700;
   font-size: 24px;
   line-height: 29px;
-  /* identical to box height */
 
   color: ${({ theme }) => theme.color.secondary};
   padding-bottom: 1.5rem;

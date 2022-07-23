@@ -17,7 +17,6 @@ export const StatName = styled.p`
   font-weight: 700;
   font-size: 14px;
   line-height: 17px;
-  /* identical to box height */
 
   color: ${({ theme }) => theme.color.secondary};
 `;
@@ -26,7 +25,6 @@ export const StatValue = styled.p`
   font-weight: 700;
   font-size: 32px;
   line-height: 39px;
-  /* identical to box height */
 
   color: ${({ theme }) => theme.color.primary};
 `;

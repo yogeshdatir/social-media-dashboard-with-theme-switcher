@@ -8,7 +8,6 @@ export const ToggleLabel = styled.label`
   font-weight: 700;
   font-size: 14px;
   line-height: 17px;
-  /* identical to box height */
 
   text-align: right;
 

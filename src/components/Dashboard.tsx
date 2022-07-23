@@ -6,6 +6,7 @@ import {
   Flex,
   Header,
   Heading,
+  Mask,
   SubHeader,
   SubTitle,
   VStack,
@@ -99,64 +100,71 @@ const Dashboard = (props: Props) => {
 
   return (
     <Background>
-      <Container>
-        <Header>
-          <VStack>
-            <Heading>Social Media Dashboard</Heading>
-            <SubTitle>Total Followers: 23,004</SubTitle>
-          </VStack>
-          <Toggle
-            onChange={(event: ChangeEvent) => {
-              currentThemeName === "light"
-                ? setCurrentThemeName("dark")
-                : setCurrentThemeName("light");
-            }}
-            label="Dark Mode"
-          />
-        </Header>
-        <CardsFlex>
-          {mainCards.map(
-            ({ username, statValue, change, socialMedia }: IMainCardsData) => {
-              return (
-                <MainCard
-                  key={socialMedia}
-                  username={username}
-                  statValue={statValue}
-                  change={change}
-                  borderColor={colorSwitcher(socialMedia)}
-                  SVGSocialMediaLogo={logoSwitcher(socialMedia)}
-                />
-              );
-            }
-          )}
-        </CardsFlex>
-        <Flex direction="column">
-          <SubHeader>Overview - Today</SubHeader>
+      <Mask>
+        <Container>
+          <Header>
+            <VStack>
+              <Heading>Social Media Dashboard</Heading>
+              <SubTitle>Total Followers: 23,004</SubTitle>
+            </VStack>
+            <Toggle
+              onChange={(event: ChangeEvent) => {
+                currentThemeName === "light"
+                  ? setCurrentThemeName("dark")
+                  : setCurrentThemeName("light");
+              }}
+              label="Dark Mode"
+            />
+          </Header>
           <CardsFlex>
-            {overviewCards.map(
-              (
-                {
-                  statName,
-                  socialMedia,
-                  statValue,
-                  percentageChange,
-                }: IOverviewCardsData,
-                index: number
-              ) => {
+            {mainCards.map(
+              ({
+                username,
+                statValue,
+                change,
+                socialMedia,
+              }: IMainCardsData) => {
                 return (
-                  <OverviewCard
-                    key={index}
-                    statName={statName}
+                  <MainCard
+                    key={socialMedia}
+                    username={username}
                     statValue={statValue}
-                    percentageChange={percentageChange}
+                    change={change}
+                    borderColor={colorSwitcher(socialMedia)}
                     SVGSocialMediaLogo={logoSwitcher(socialMedia)}
                   />
                 );
               }
             )}
           </CardsFlex>
-        </Flex>
-      </Container>
+          <Flex direction="column">
+            <SubHeader>Overview - Today</SubHeader>
+            <CardsFlex>
+              {overviewCards.map(
+                (
+                  {
+                    statName,
+                    socialMedia,
+                    statValue,
+                    percentageChange,
+                  }: IOverviewCardsData,
+                  index: number
+                ) => {
+                  return (
+                    <OverviewCard
+                      key={index}
+                      statName={statName}
+                      statValue={statValue}
+                      percentageChange={percentageChange}
+                      SVGSocialMediaLogo={logoSwitcher(socialMedia)}
+                    />
+                  );
+                }
+              )}
+            </CardsFlex>
+          </Flex>
+        </Container>
+      </Mask>
     </Background>
   );
 };
