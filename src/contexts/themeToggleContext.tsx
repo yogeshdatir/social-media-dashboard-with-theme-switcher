@@ -11,7 +11,7 @@ interface IThemeContextProps {
   children?: ReactNode;
 }
 export default function ThemeToggleContextProvider(props: IThemeContextProps) {
-  const [currentThemeName, setCurrentThemeName] = useState<string>("light");
+  const [currentThemeName, setCurrentThemeName] = useState<string>("dark");
 
   return (
     <ThemeToggleContext.Provider

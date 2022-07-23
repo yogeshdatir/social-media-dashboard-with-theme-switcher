@@ -10,7 +10,7 @@ const Toggle = ({ onChange, label }: IProps) => {
   return (
     <ToggleLabel>
       {label}
-      <CheckBox type="checkbox" onChange={onChange} />
+      <CheckBox type="checkbox" onChange={onChange} defaultChecked />
       <Slider />
     </ToggleLabel>
   );
