@@ -10,34 +10,47 @@ export const CheckBox = styled.input`
   top: -9999px;
 
   :checked + span {
-    background-color: #1890ff;
+    background-image: linear-gradient(225deg, #40db82 0%, #388fe7 98.02%);
 
     ::before {
-      left: 27px;
+      left: calc(100% - 3px);
+      transform: translateX(-100%);
     }
+  }
+
+  :focus + span {
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  :focus:checked + span {
+    box-shadow: 0 0 5px 3px rgba(24, 144, 255, 0.5);
   }
 `;
 
 export const Slider = styled.span`
   display: flex;
   cursor: pointer;
-  width: 50px;
-  height: 25px;
-  border-radius: 50px;
-  background-color: #bfbfbf;
+  width: 48px;
+  height: 24px;
+  border-radius: 48px;
+  background-color: #aeb3cb;
   position: relative;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s, box-shadow 0.4s;
 
   ::before {
     content: "";
     position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 21px;
-    height: 21px;
-    border-radius: 21px;
-    transition: 0.2s;
-    background: #fff;
+    top: 3px;
+    left: 3px;
+    width: 17.5px;
+    height: 17.5px;
+    border-radius: 18px;
+    transition: 0.25s;
+    background-color: #fff;
     box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2);
+  }
+
+  :active:before {
+    width: 35px;
   }
 `;
