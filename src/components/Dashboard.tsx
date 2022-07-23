@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
 import {
+  Attribution,
   Background,
   CardsFlex,
   Container,
@@ -100,71 +101,85 @@ const Dashboard = (props: Props) => {
 
   return (
     <Background>
-      <Mask>
-        <Container>
-          <Header>
-            <VStack>
-              <Heading>Social Media Dashboard</Heading>
-              <SubTitle>Total Followers: 23,004</SubTitle>
-            </VStack>
-            <Toggle
-              onChange={(event: ChangeEvent) => {
-                currentThemeName === "light"
-                  ? setCurrentThemeName("dark")
-                  : setCurrentThemeName("light");
-              }}
-              label="Dark Mode"
-            />
-          </Header>
+      <Mask></Mask>
+      <Container>
+        <Header>
+          <VStack>
+            <Heading>Social Media Dashboard</Heading>
+            <SubTitle>Total Followers: 23,004</SubTitle>
+          </VStack>
+          <Toggle
+            onChange={(event: ChangeEvent) => {
+              currentThemeName === "light"
+                ? setCurrentThemeName("dark")
+                : setCurrentThemeName("light");
+            }}
+            label="Dark Mode"
+          />
+        </Header>
+        <CardsFlex>
+          {mainCards.map(
+            ({ username, statValue, change, socialMedia }: IMainCardsData) => {
+              return (
+                <MainCard
+                  key={socialMedia}
+                  username={username}
+                  statValue={statValue}
+                  change={change}
+                  borderColor={colorSwitcher(socialMedia)}
+                  SVGSocialMediaLogo={logoSwitcher(socialMedia)}
+                />
+              );
+            }
+          )}
+        </CardsFlex>
+        <Flex direction="column">
+          <SubHeader>Overview - Today</SubHeader>
           <CardsFlex>
-            {mainCards.map(
-              ({
-                username,
-                statValue,
-                change,
-                socialMedia,
-              }: IMainCardsData) => {
+            {overviewCards.map(
+              (
+                {
+                  statName,
+                  socialMedia,
+                  statValue,
+                  percentageChange,
+                }: IOverviewCardsData,
+                index: number
+              ) => {
                 return (
-                  <MainCard
-                    key={socialMedia}
-                    username={username}
+                  <OverviewCard
+                    key={index}
+                    statName={statName}
                     statValue={statValue}
-                    change={change}
-                    borderColor={colorSwitcher(socialMedia)}
+                    percentageChange={percentageChange}
                     SVGSocialMediaLogo={logoSwitcher(socialMedia)}
                   />
                 );
               }
             )}
           </CardsFlex>
-          <Flex direction="column">
-            <SubHeader>Overview - Today</SubHeader>
-            <CardsFlex>
-              {overviewCards.map(
-                (
-                  {
-                    statName,
-                    socialMedia,
-                    statValue,
-                    percentageChange,
-                  }: IOverviewCardsData,
-                  index: number
-                ) => {
-                  return (
-                    <OverviewCard
-                      key={index}
-                      statName={statName}
-                      statValue={statValue}
-                      percentageChange={percentageChange}
-                      SVGSocialMediaLogo={logoSwitcher(socialMedia)}
-                    />
-                  );
-                }
-              )}
-            </CardsFlex>
-          </Flex>
-        </Container>
-      </Mask>
+        </Flex>
+
+        <Attribution>
+          Challenge by{" "}
+          <a
+            href="https://www.frontendmentor.io/challenges/social-media-dashboard-with-theme-switcher-6oY8ozp_H/hub/social-media-dashboard-with-theme-switcher-oaN0VBvz3z"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Frontend Mentor
+          </a>
+          . Coded by{" "}
+          <a
+            href="https://www.frontendmentor.io/profile/yogeshdatir"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Yogesh D
+          </a>
+          .
+        </Attribution>
+      </Container>
     </Background>
   );
 };

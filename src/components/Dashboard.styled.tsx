@@ -2,15 +2,16 @@ import styled from "@emotion/styled";
 
 export const Background = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100%;
   background-color: ${({ theme }) => theme.background.body.primary};
   position: relative;
 `;
 
 export const Mask = styled.div`
   position: absolute;
+  z-index: 0;
   width: 100%;
-  height: 35vh;
+  height: 244px;
   background-color: ${({ theme }) => theme.background.body.secondary};
   border-radius: 0px 0px 20px 20px;
 `;
@@ -18,6 +19,7 @@ export const Mask = styled.div`
 export const Container = styled.div`
   max-width: 1110px;
   margin: 0 auto;
+  height: auto;
   min-height: 100vh;
   padding: 2.25rem 0 4.75rem 0;
   box-sizing: border-box;
@@ -69,6 +71,7 @@ export const SubTitle = styled.p`
 export const VStack = styled.div`
   display: flex;
   flex-direction: column;
+  z-index: 1;
 `;
 
 interface IFlexProps {
@@ -126,5 +129,15 @@ export const CardsFlex = styled(Flex)`
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+  }
+`;
+
+export const Attribution = styled.footer`
+  font-size: 11px;
+  text-align: center;
+  color: ${({ theme }) => theme.color.secondary};
+
+  a {
+    color: ${({ theme }) => theme.color.primary};
   }
 `;
