@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import {
   Background,
   CardsFlex,
@@ -94,6 +94,8 @@ const colorSwitcher = (socialMedia: string) => {
 };
 
 const Dashboard = (props: Props) => {
+  const [isDarkModeOn, setIsDarkModeOn] = useState<boolean>(false);
+
   return (
     <Background>
       <Container>
@@ -102,6 +104,9 @@ const Dashboard = (props: Props) => {
             <Heading>Social Media Dashboard</Heading>
             <SubTitle>Total Followers: 23,004</SubTitle>
           </VStack>
+          <Toggle
+            onChange={(event: ChangeEvent) => setIsDarkModeOn(!isDarkModeOn)}
+          />
         </Header>
         <CardsFlex>
           {mainCards.map(
