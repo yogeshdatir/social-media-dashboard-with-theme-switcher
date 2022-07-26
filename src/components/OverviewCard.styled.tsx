@@ -24,7 +24,7 @@ export const StatName = styled.p`
 export const StatValue = styled.p`
   font-weight: 700;
   font-size: 32px;
-  line-height: 39px;
+  line-height: 32px;
 
   color: ${({ theme }) => theme.color.primary};
 `;
