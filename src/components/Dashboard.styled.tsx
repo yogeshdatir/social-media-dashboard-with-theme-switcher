@@ -119,7 +119,7 @@ export const SubHeader = styled.h2`
   font-size: 24px;
   line-height: 29px;
 
-  color: ${({ theme }) => theme.color.secondary};
+  color: ${({ theme }) => theme.color.primary};
   padding-bottom: 1.5rem;
 `;
 
